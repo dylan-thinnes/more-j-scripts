@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+rm ticker; touch ticker; tail -f ticker | jconsole tetris2.ijs &
+{ while sleep 1; do echo tick state >> ticker; done } &
+stty -echo; while read -N 3 key; do echo "arrow_$(echo $key | tail -c2)" state >> ticker; done
